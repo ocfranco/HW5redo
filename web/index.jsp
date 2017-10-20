@@ -1,6 +1,6 @@
 <%-- 
-    Document   : read
-    Created on : 16-Oct-2017, 13:25:57
+    Document   : index
+    Created on : 19-Oct-2017, 15:13:42
     Author     : btfra
 --%>
 
@@ -11,13 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    
-    <% String table = (String) request.getAttribute("table"); %>
     <body>
-        <h1>My Cars</h1>
-        <%= table %>
-        
-        <br><br>
-        <a href ="add">Add a New Car</a>
+        <h1>My Car Database</h1>
+        <a href="read">View All Cars</a>
     </body>
 </html>

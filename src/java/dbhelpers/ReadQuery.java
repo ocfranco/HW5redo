@@ -15,14 +15,13 @@ import model.Cars;
 
 
 public class ReadQuery {
-   
+    
     private Connection conn;
     private ResultSet results;
     
-    
     public ReadQuery(){
-     
-    Properties props = new Properties(); //MWC
+        
+    Properties props = new Properties();
     InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
             props.load(instr);
@@ -49,25 +48,27 @@ public class ReadQuery {
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
+            
         
-    } 
+    }
     
     public void doRead(){
-        
+            
         try {
-            String query = "Select * from friends";
+            String query = "Select * from car";
             
             PreparedStatement ps = conn.prepareStatement(query);
             this.results = ps.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
+   
     }
     
     public String getHTMLTable(){
         
-        String table= "";
-        
+        String table = "";
         table += "<table border=1>";
         
         try {
@@ -80,40 +81,42 @@ public class ReadQuery {
                 car.setCarModel(this.results.getString("carModel"));
                 car.setCarHP(this.results.getInt("carHP"));
                 
-                table += "<tr>";
+                table +="<tr>";
                 table +="<td>";
-                table += car.getCarID();  
+                table += car.getCarID();
                 table +="</td>";
                 
                 table +="<td>";
-                table += car.getCarYear();  
+                table += car.getCarYear();
                 table +="</td>";
                 
                 table +="<td>";
-                table += car.getCarMake();  
+                table += car.getCarMake();
                 table +="</td>";
                 
                 table +="<td>";
-                table += car.getCarModel();  
+                table += car.getCarModel();
                 table +="</td>";
                 
                 table +="<td>";
-                table += car.getCarHP();  
+                table += car.getCarHP();
                 table +="</td>";
                 
-                
-                table += "</tr>";
+                table += "<td>";
+                table += "<a href=update?carID=" + car.getCarID() + "> Update </a>" + "<a href=delete?carID=" + car.getCarID()+ "> Delete </a>";
+                table +="</td>";
+                table +="</tr>";
             }
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
+      
         
+        table +="</table>";
         
-        
-        table += "</table>";
-        
-          
             return table;
-        
+                    
+            
     }
-}
+    
+ }

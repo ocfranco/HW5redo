@@ -9,9 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add a Friend</title>
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+        <title>Add a Car</title>
     </head>
     <body>
+        <div class="wrap">
         <h1>Add a New Car</h1>
         
         <form name="addForm" action="addCar" method="get">
@@ -33,5 +35,6 @@
             
             
         </form>
+        </div>
     </body>
 </html>
